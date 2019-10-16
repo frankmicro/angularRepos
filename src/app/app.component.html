@@ -1,0 +1,12 @@
+<ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
+<div toastContainer></div>
+<div class="mainwrapper" *ngIf="globals.LoggedIn; else elseblock">
+    <app-header></app-header>
+    <div [style.display]="globals.LoaderGlobal ? 'block' : 'none'" id="preloader"></div>
+    <router-outlet></router-outlet>
+</div>
+<ng-template #elseblock> 
+    <div [style.display]="globals.LoaderGlobal ? 'block' : 'none'" id="preloader"></div>
+    <router-outlet></router-outlet>
+</ng-template>
+

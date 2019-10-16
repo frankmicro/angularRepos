@@ -1,0 +1,37 @@
+<div class="content-section">
+  <div class="container content-holder">
+    <div class="">
+      <div class="assessment-form-container">
+        <div class="assessment-cards">
+          <a
+            *ngFor="let assessment of assessments; let i = index"
+            class="section stage-{{i + 1}}"
+            [ngClass]="{'locked': assessment.flag===3}"
+            (click)="openAssessmentFormModal(assessment)"
+          >
+            <div class="content">
+                <div *ngIf="assessment.flag!==3" class="challenge-icon">
+                  <img src="{{assessment.icon}}">
+                </div>
+                <div *ngIf="assessment.flag===3" class="challenge-lock-icon">
+                  Icon will come here
+                </div>
+                <div *ngIf="assessment.flag!==3" class="challenge-title">
+                  {{ assessment.title }}
+                </div>
+                <div class="challenge-stage">
+                  Stage {{ assessment.id }}
+                </div>
+                <div *ngIf="assessment.flag!==3" class="challenge-description">
+                  {{ assessment.title }}
+                </div>
+                <div *ngIf="assessment.flag!==3" class="challenge-status">
+                  {{ assessment.flag === 1 ? 'Completed' : (assessment.flag === 2 ? 'Freezed' : 'On going')}}
+                </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

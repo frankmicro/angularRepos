@@ -1,0 +1,219 @@
+<form id="tab4_form" name="tab4_form" novalidate="novalidate" (ngSubmit)="f.form.valid && goToNext()" #f="ngForm">
+  <div class="content-card">
+    <div class="profile-content step-content">
+      <section class="step-tab-panel active" id="tab4">
+        
+        <!-- binge drink -->
+        <div class="form-group ">
+          <label>
+            Do u binge drink?
+            <span class="mandatory blink-2">
+              *
+            </span>
+          </label>
+          <div class="radio inline">
+            <input aria-required="true" class="16_radio" id="16_yes" name="16" style="display:inline-block;"
+              type="radio" value="Yes"
+              required
+              [(ngModel)] = "habits['16']"
+              #drink = "ngModel"
+              (change)="doUDrinkChangeHandler()"
+              />
+            <label for="16_yes">
+              Yes
+            </label>
+          </div>
+          <div class="radio inline">
+            <input aria-required="true" class="16_radio" id="16_no" name="16" style="display:inline-block;"
+              type="radio" value="No"
+              required
+              [(ngModel)] = "habits['16']"
+              #drink = "ngModel"
+              (change)="doUDrinkChangeHandler()"
+              />
+            <label for="16_no">
+              No
+            </label>
+          </div>
+          <div *ngIf="drink.invalid && (f.submitted || drink.dirty || drink.touched)" class="alert alert-danger" class="cust-error">
+            <div *ngIf="drink.errors.required">
+              This field is required.
+            </div>
+          </div>
+        </div>
+        <!-- /.binge drink -->
+
+        <!-- textfieds for drinks -->
+        <div *ngIf="showDrinkInputs" class="form-group" id="drink_input_fields">
+          <label>
+            How much do you drink in a week ?
+          </label>
+          <div class="row">
+            <!-- whisky vodka -->
+            <div class="sub-group col-xs-12 col-sm-6">
+              <label class="label-input">
+                Whisky /Vodka /Etc (ml)
+                <span class="mandatory blink-2">
+                  *
+                </span>
+              </label>
+              <p [ngClass]="{ 'has-error': vodka.touched && vodka.invalid }">
+              <input aria-required="true" class="form-control valid required border-ef" id="question_18" 
+              type="text"
+              name="18"
+              required
+              [(ngModel)] = "habits['18']"
+              #vodka = "ngModel"
+              DigitDecimaNumberOnly
+              />
+              </p>
+              <div *ngIf="vodka.invalid && (f.submitted || vodka.dirty || vodka.touched)" class="alert alert-danger" class="cust-error">
+                <div *ngIf="vodka.errors.required">
+                  This field is required.
+                </div>
+              </div>
+            </div>
+            <!-- /.whisky -->
+
+            <!-- beer -->
+            <div class="sub-group col-xs-12 col-sm-6">
+              <label class="label-input">
+                Beer (pint/ml)
+                <span class="mandatory blink-2">
+                  *
+                </span>
+              </label>
+              <p [ngClass]="{ 'has-error': vodka.touched && vodka.invalid }">
+              <input aria-required="true" class="form-control valid required border-ef" id="question_19" 
+                type="text"
+                name="19"
+                required
+                [(ngModel)] = "habits['19']"
+                #beer = "ngModel"
+                DigitDecimaNumberOnly
+                />
+              </p>
+              <div *ngIf="beer.invalid && (f.submitted || beer.dirty || beer.touched)" class="alert alert-danger" class="cust-error">
+                <div *ngIf="beer.errors.required">
+                  This field is required.
+                </div>
+              </div>
+            </div>
+            <!-- /.beer -->
+          </div>
+        </div>
+        <!-- end /. textfields -->
+
+        <!-- smoke -->
+        <div class="form-group ">
+          <label>
+            Do you smoke?
+            <span class="mandatory blink-2">
+              *
+            </span>
+          </label>
+          <div class="radio inline">
+            <input aria-required="true" class="20_radio" id="20_yes" name="20"  style="display:inline-block;"
+              type="radio" value="Yes"
+              required
+              [(ngModel)] = "habits['20']"
+              #smoke = "ngModel"
+              (change)="doUSmokeChangeHandler()"
+              >
+            <label for="20_yes">
+              Yes
+            </label>
+          </div>
+          <div class="radio inline">
+            <input aria-required="true" class="20_radio" id="20_no" name="20"  style="display:inline-block;"
+              type="radio" value="No"
+              required
+              [(ngModel)] = "habits['20']"
+              #smoke = "ngModel"
+              (change)="doUSmokeChangeHandler()"
+              >
+            <label for="20_no">
+              No
+            </label>
+          </div>
+          <div *ngIf="smoke.invalid && (f.submitted || smoke.dirty || smoke.touched)" class="alert alert-danger" class="cust-error">
+            <div *ngIf="smoke.errors.required">
+              This field is required.
+            </div>
+          </div>
+        </div>
+        <!-- /.smoke -->
+
+        <!-- textfield for smoke -->
+        <div *ngIf="showSmokeInputs" class="form-group eff-field" id="smoke_input_fields">
+          <label>
+            How many do you smoke in a day?
+            <span class="mandatory blink-2">
+              *
+            </span>
+          </label>
+          <p [ngClass]="{ 'has-error': quantity.touched && quantity.invalid }">
+          <input aria-required="true" class="form-control valid required border-ef" id="question_21" 
+            type="text"
+            maxlength="10"
+            name="21" 
+            required
+            [(ngModel)] = "habits['21']"
+            #quantity = "ngModel"
+            DigitDecimaNumberOnly
+            />
+            </p>
+          <div *ngIf="quantity.invalid && (f.submitted || quantity.dirty || quantity.touched)" class="alert alert-danger" class="cust-error">
+            <div *ngIf="quantity.errors.required">
+              This field is required.
+            </div>
+          </div>
+        </div>
+        <!-- /.textfield -->
+
+        <!-- water consumption -->
+        <div class="form-group eff-field">
+          <label>
+            Water consumption (litres)
+            <span class="mandatory blink-2">
+              *
+            </span>
+          </label>
+          <p [ngClass]="{ 'has-error': water.touched && water.invalid }">
+          <input aria-required="true" class="form-control valid required border-ef" id="question_22" 
+            type="text"
+            maxlength="10"
+            name="22" 
+            required
+            [(ngModel)] = "habits['22']"
+            #water = "ngModel"
+            DigitDecimaNumberOnly
+            />
+          </p>
+          <div *ngIf="water.invalid && (f.submitted || water.dirty || water.touched)" class="alert alert-danger" class="cust-error">
+            <div *ngIf="water.errors.required">
+              This field is required.
+            </div>
+          </div>
+        </div>
+        <!-- /.water consumption -->
+        
+      </section>
+    </div>
+    <div *ngIf="f.form.invalid; else elseblock">
+      {{ profileDataService.validationError(f.form.invalid, 4) }}
+    </div> 
+    <ng-template #elseblock>
+      {{ profileDataService.validationError(f.form.invalid, 4) }}
+      {{ formValidHandler() }}
+    </ng-template>
+    <div class="step-footer">
+      <button class="step-btn previous" data-direction="prev" (click)="goToPrevious()" [disabled]="f.form.invalid">
+        Previous
+      </button>
+      <button type="submit" class="step-btn btn btn-danger saveme" data-direction="next">
+        Next
+      </button>
+    </div>
+  </div>
+</form>

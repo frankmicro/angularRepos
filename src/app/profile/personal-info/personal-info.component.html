@@ -1,0 +1,330 @@
+<form id="tab1_form" novalidate="novalidate" (ngSubmit)="f.form.valid && !goalsInvalid && goToNext()" #f="ngForm">
+  <div class="content-card">
+    <div class="profile-content step-content">
+      <section class="step-tab-panel active" id="tab1">
+        
+        <div class="form-group">
+          <div class="row">
+            <div class="sub-group col-xs-12 col-sm-6">
+              <label class="label-input">
+                Name
+                <span class="mandatory blink-2">
+                  *
+                </span>
+              </label>
+              <input class="form-control valid required border-ef" [(ngModel)]="userData.first_name+' '+userData.middle_name+' '+userData.last_name" type="text" name="name" readonly>
+            </div>
+            <div class="sub-group col-xs-12 col-sm-6">
+              <label class="label-input">
+                Email ID
+                <span class="mandatory blink-2">
+                  *
+                </span>
+              </label>
+              <input class="form-control valid required border-ef"  [(ngModel)]="userData.email"  type="email" name="email" readonly>
+            </div>
+            <div class="sub-group col-xs-12 col-sm-6">
+              <label class="label-input">
+                Birth Date
+                <span class="mandatory blink-2">
+                  *
+                </span>
+              </label>
+              <div class="form-group">
+                <div class="input-group" style="margin-left: -1px; display: flex;">
+                  <input class="form-control" name="1"
+                    [(ngModel)]="dobObject"
+                    required
+                    ngbDatepicker
+                    #d="ngbDatepicker"
+                    #dob="ngModel"
+                    (dateSelect)="dobSelectHandler()"
+                    [minDate]="{year: 1970, month: 1, day: 1}"
+                  >
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button" style="height: 100%; border: 1px solid transparent; border-radius: 0;">
+                      <span class="fa fa-calendar"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="dob.invalid && (f.submitted || dob.dirty || dob.touched)" class="alert alert-danger" class="cust-error">
+                <div *ngIf="dob.errors.required">
+                  Date of birth is required.
+                </div>
+              </div>
+            </div>
+            <div class="sub-group col-xs-12 col-sm-6">
+              <label class="label-input">
+                Age
+                <span class="mandatory blink-2">
+                  *
+                </span>
+              </label>
+              <input class="valid form-control border-ef" name="2" readonly="" type="text"
+                    [(ngModel)]="personalInfo['2']"
+                    #age="ngModel"
+              >
+              <div class="error-2 agespacer"></div>
+
+            </div>
+
+            <!-- gender -->
+            <div class="sub-group col-xs-12 col-sm-6">
+              <div class="checkbox-lists">
+                <label class="label-input">
+                  Gender
+                  <span class="mandatory blink-2">
+                    *
+                  </span>
+                </label>
+                <div class="radio inline">
+                  <input aria-required="true" class="chk" id="male_radio" name="3"
+                    style="display:inline-block;" type="radio" value="Male"
+                    [(ngModel)]="personalInfo['3']"
+                    required
+                    #gender="ngModel"
+                    (change)="genderChangeHandler()"
+                    >
+                  <label for="male_radio">
+                    Male
+                  </label>
+                </div>
+                <div class="radio inline">
+                  <input aria-required="true" class="chk" id="female_radio" name="3" 
+                    style="display:inline-block;" type="radio" value="Female"
+                    [(ngModel)]="personalInfo['3']"
+                    required
+                    #gender="ngModel"
+                    (change)="genderChangeHandler()"
+                    >
+                  <label for="female_radio">
+                    Female
+                  </label>
+                </div>
+                <div class="radio inline">
+                  <input aria-required="true" class="chk" id="others_radio" name="3" required=""
+                    style="display:inline-block;" type="radio" value="Others"
+                    [(ngModel)]="personalInfo['3']"
+                    required
+                    #gender="ngModel"
+                    (change)="genderChangeHandler()"
+                    >
+                  <label for="others_radio">
+                    Others
+                  </label>
+                </div>
+                  <div *ngIf="gender.invalid && (f.submitted || gender.dirty || gender.touched)" class="alert alert-danger" class="cust-error">
+                    <div *ngIf="gender.errors.required">
+                      Gender is required.
+                    </div>
+                  </div>
+              </div>
+              <!-- /.gender -->
+            </div>
+
+            <!-- desk hours-->
+            <div class="sub-group col-xs-12 col-sm-6">
+              <label class="label-input">
+                Desk Job
+                <span class="mandatory blink-2">
+                  *
+                </span>
+              </label>
+              <div class="radio inline">
+                <input aria-required="true" id="desk_yes_radio"  required="" style="display:inline-block;"
+                  type="radio" value="Yes"
+                  name="5"
+                  [(ngModel)]="personalInfo['5']"
+                  required
+                  #desk="ngModel"
+                  >
+                <label for="desk_yes_radio">
+                  Yes
+                </label>
+              </div>
+              <div class="radio inline">
+                <input aria-required="true" id="desk_no_radio"  required="" style="display:inline-block;"
+                  type="radio" value="No"
+                  name="5"
+                  [(ngModel)]="personalInfo['5']"
+                  required
+                  #desk="ngModel"
+                  >
+                <label for="desk_no_radio">
+                  No
+                </label>
+              </div>
+              <div *ngIf="desk.invalid && (f.submitted || desk.dirty || desk.touched)" class="alert alert-danger" class="cust-error">
+                <div *ngIf="desk.errors.required">
+                  Desk job is required.
+                </div>
+              </div>
+            </div>
+            <!-- desk hours -->
+
+            <!-- occupation -->
+            <div class="sub-group col-xs-12 col-sm-6">
+              <label class="label-input">
+                Occupation
+                <span class="mandatory blink-2">
+                  *
+                </span>
+              </label>
+              <p [ngClass]="{ 'has-error': occupation.touched && occupation.invalid }">
+                <input class="form-control valid required border-ef" id="occupation" 
+                name="4" type="text" aria-required="true" required
+                minlength="3" 
+                [(ngModel)]="personalInfo['4']" 
+                #occupation="ngModel"
+                AplhabetsOnly>
+              </p>
+
+                <div class="form-group">
+                  <div *ngIf="occupation.invalid && (f.submitted || occupation.dirty || occupation.touched)" class="alert alert-danger" class="cust-error">
+                    <div *ngIf="occupation.errors.required">
+                      Occupation is required.
+                    </div>
+                    <div *ngIf="occupation.errors.minlength" class="cust-error">
+                      Name must be at least 3 characters long.
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!-- /.occupation -->
+
+            <!-- work hours -->
+            <div class="sub-group col-xs-12 col-sm-6">
+              <label class="label-input">
+                Work hours
+                <span class="mandatory blink-2">
+                  *
+                </span>
+              </label>
+              <p [ngClass]="{ 'has-error': work.touched && work.invalid }">
+                <input class="valid form-control border-ef valid" id="work_hour" 
+                maxlength="2" 
+                name="6"
+                required
+                type="text" aria-required="true"
+                [(ngModel)]="personalInfo['6']" 
+                #work="ngModel"
+                DigitDecimaNumberOnly
+                >
+            </p>
+            <div class="form-group">
+              <div *ngIf="work.invalid && (f.submitted || work.dirty || work.touched)" class="alert alert-danger" class="cust-error">
+                <div *ngIf="work.errors.required">
+                  Work hours is required.
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <!-- work hours -->
+
+          </div>
+        </div>
+
+        <!-- Goals to achieve -->
+        <div class="form-group checkbox-lists">
+          <label>
+            Goal to achieve towards the end of 12 weeks
+            <span class="mandatory blink-2">
+              *
+            </span>
+          </label>
+          <div class="checkbox" *ngFor="let option of goalOptions">
+            <input name="checkbox_7[]" 
+              type="checkbox" value="{{option.value}}"
+              id="{{ option.id }}"
+              required
+              [(ngModel)]="option.checked" 
+              [ngModelOptions]="{standalone: true}"
+              #goals="ngModel"
+              (change)="goalOptionChangeHandler(option)"
+              >
+            <label for="{{ option.id }}">
+              {{ option.name }}
+            </label>
+          </div>
+          <div *ngIf="(f.submitted) && goalsInvalid" class="alert alert-danger" class="cust-error">
+            <div>
+              Please check any one field.
+            </div>
+          </div>
+        </div>
+        <!-- /.goals -->
+
+        <div class="form-group">
+          <label>
+            Mention the kind of physical activity/ Exercise/Walking etc that you are involved in
+          </label>
+          <div class="row">
+            <div class="sub-group col-xs-12 col-sm-6">
+              <label class="label-input">
+                No. of days in a week
+                <span class="mandatory blink-2">
+                  *
+                </span>
+              </label>
+              <p [ngClass]="{ 'has-error': week.touched && week.invalid }">
+              <input aria-required="true" class="form-control valid border-ef" id="question_9" name="9" type="text"
+                required
+                [(ngModel)]="personalInfo['9']" 
+                #week="ngModel"
+                DigitDecimaNumberOnly
+                >
+              </p>
+              <div class="form-group">
+                <div *ngIf="week.invalid && (f.submitted || week.dirty || week.touched)" class="alert alert-danger" class="cust-error">
+                  <div *ngIf="week.errors.required">
+                    This field is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sub-group col-xs-12 col-sm-6">
+              <label class="label-input">
+                No. of minutes in a day
+                <span class="mandatory blink-2">
+                  *
+                </span>
+              </label>
+              <p [ngClass]="{ 'has-error': minutes.touched && minutes.invalid }">
+              <input aria-required="true" class="form-control valid required border-ef" id="question_10" name="10"
+                type="text" required
+                [(ngModel)]="personalInfo['10']" 
+                #minutes="ngModel"
+                DigitDecimaNumberOnly
+                >
+            </p>
+            <div class="form-group"> 
+              <div *ngIf="minutes.invalid && (f.submitted || minutes.dirty || minutes.touched)" class="alert alert-danger" class="cust-error">
+                <div *ngIf="minutes.errors.required">
+                  This field is required.
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div *ngIf="f.form.invalid; else elseblock">
+      {{ profileDataService.validationError((f.form.invalid), 1) }}
+    </div>
+    <ng-template #elseblock>
+      {{ profileDataService.validationError((f.form.invalid || goalsInvalid), 1) }}
+      {{ formValidHandler() }}
+    </ng-template>
+    <div class="step-footer">
+      <!-- <button (click)="goToNext()" class="step-btn btn btn-danger saveme" data-direction="next" [disabled]="f.form.invalid">
+        Next
+      </button> -->
+      <button type="submit" class="step-btn btn btn-danger saveme" data-direction="next">
+        Next
+      </button>
+    </div>
+  </div>
+</form>

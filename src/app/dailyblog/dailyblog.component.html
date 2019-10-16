@@ -1,0 +1,27 @@
+<div class="content-section">
+  <div class="container content-holder">
+    <div class="myscroll mCustomScrollbar">
+      <!-- <div class="f2f-breadcrumb">
+                    <a href="#">Instruction</a>
+                    <a href="#" class="active">blogs</a>
+                </div> -->
+      <div class="blog-card">
+        <div class="header-card">
+          <h3>{{ notificationData?.title }}</h3>
+        </div>
+        <div class="content-card">
+          <!-- @if($notificationData['banner']) -->
+          <div class="blog-banner" *ngIf="notificationData?.banner">
+            <!-- <img id="mynotifImg" src="{{$notificationData['banner']}}" alt=""> -->
+             <img id="mynotifImg" src="{{notificationData?.banner}}" alt=""> 
+          </div>
+         <!--  @endif -->
+          <div class="blogdata">
+              <p [innerHtml]="notificationData?.content"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  

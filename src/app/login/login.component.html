@@ -1,0 +1,64 @@
+
+  <div class="login-wrapper">
+      <div class="superhero">
+          <img src="assets/images/newBase.png" alt="Super Hero Login" class="bgimg"/>
+          <div class="flyingsuperhero entrance">
+              <img src="assets/images/loginvyom.png" alt="" class="vyom vibrate">  
+          </div>
+      </div>
+
+        <div class="inner-container">
+        <div *ngIf="danger" class="alert alert-danger alert-dismissable"  >
+          {{errMsg}}
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          </div>
+  
+          <div *ngIf="success" class="alert alert-success alert-dismissable" >
+            {{successMsg}}
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          </div>
+          
+          <div class="box">
+          
+          <div class="login-img">
+                     <a href="javascript:void(0);"><img src="assets/images/f2f-logo.png" alt="F2FLogo"></a>             
+          </div>
+          <h4>LOGIN</h4>
+            <!-- <form id="loginForm" role="form" (ngSubmit)="login()"> -->
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
+              <p [ngClass]="{ 'has-error': formControls.email.touched && formControls.email.errors }">
+                <input type="email" placeholder="Email" formControlName="email" placeholder="Email" class="logininput">
+              </p>
+
+              <div *ngIf="isSubmitted && formControls.email.errors" class="cust-error">
+                <div *ngIf="formControls.email.errors.required">Email is required*</div>
+                <div *ngIf="formControls.email.errors.email">Email must be a valid email address</div>
+              </div>
+
+            <p [ngClass]="{ 'has-error': formControls.password.touched && formControls.password.errors }">
+                <input type="password" type="password" formControlName="password"  placeholder="Password"  class="logininput"/>
+            </p>
+
+            <div *ngIf="isSubmitted && formControls.password.errors" class="cust-error">
+              <div *ngIf="formControls.password.errors.required">Password is required*</div>
+            </div>
+            <button [disabled]="butLogin" type="submit" class="mysignin"><span>Sign In </span><span class="loader loaderBut" *ngIf="butLoader"></span></button>
+            <p class="forgot">Forgot Password? <a routerLink="/forgot" >Click here </a> to reset</p>
+          </form>
+           
+          </div>
+      
+          <div class="login-footer">
+              <!--<p class="social-icons">
+                  <a href="#"><span class="fa fa-twitter"></span></a>
+                  <a href="#"><span class="fa fa-facebook"></span></a>
+                  <a href="#"><span class="fa fa-instagram"></span></a>
+              </p>-->
+              <div class="footer-logo">
+                  <img src="assets/images/naina-singhania-logo.png" alt="F2FLogo">
+              </div>
+          </div>
+        </div>
+
+    </div>  
+  

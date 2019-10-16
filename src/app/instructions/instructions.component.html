@@ -1,0 +1,67 @@
+<div class="content-section">
+  <div class="container content-holder">
+    <div class="myscroll mCustomScrollbar">
+
+      <div class="instruction">
+        <div class="header-card">
+          <h3>Warning</h3>
+        </div>
+        <div class="content-card instructiondata">
+          <p class="whitebold">a. Individuals with any of the below mentioned conditions cannot participate in the
+            challenge:</p>
+          <ul>
+            <li>Pregnant women </li>
+            <li>Recent Surgery</li>
+            <li>Severe Cardiac Condition</li>
+            <li>Kidney Failure</li>
+            <li>Cancer</li>
+            <li>Severe Arthritis (or any Bone deformity)</li>
+          </ul>
+
+          <p class="whitebold">b. Rules and Regulations of the Challenge:</p>
+          <ul>
+            <li>Assessment form and Diagnostic report are compulsory </li>
+            <li>The challenge for the following week will be shared with you every saturday. On accepting the challenge,
+              the weekly challenge should be started every monday.</li>
+            <li>Weight should be shared with us every Saturday.</li>
+            <li>Every week’s challenge gets carry forward to the following weeks. So on week 6, one should be following
+              challenges of week 1 to week 6.</li>
+            <li>The weight should be measured on the same weighing machine every time, at the same time of the day
+              (empty stomach). </li>
+            <li>Failure to submission of the details requested will lead to the participant’s disqualification.</li>
+            <li>Individuals with highest fitness and weightloss will win exciting prizes towards the end of the
+              challenge.</li>
+          </ul>
+
+          <p>Below rules and regulations Accept</p>
+
+          <p class="whitebold">Now that you have agreed here is what you need to do:</p>
+          <p>1. Assessment Sheet : Make sure you fill the complete form along with the information asked below before
+            saturday.</p>
+
+          <p class="whitebold">A. How and when to check the weight (in Kgs):</p>
+          <ol>
+            <li>Check the weight at the same place and same weighing scale.</li>
+            <li>Weigh empty stomach after clearing the bowels.</li>
+            <li>While standing on the scale, place your feet completely on the scale. Remove phones, keys, gadgets,
+              wallets while checking your weight.</li>
+          </ol>
+          <p class="whitebold">B. Diagnostic Reports : CBC, Lipid profile, hba1c to be done and submitted in the
+            assessment form.</p>
+          <!--  <p class="whitebold">Measurements: Steps to measure the Waist circumference</p>
+                            <ul>
+                                <li>Stand straight and erect, feet together.</li>
+                                <li>Take one end of the measuring tape in your right hand and wrap the tape around the waist to form a circle around the waist.</li>
+                                <li>Keep yourself relaxed while performing the activity.</li>
+                                <li>Place two finger above the navel (index and middle finger). The measurement tape should be placed in such a way that it is in the same plane and doesn’t go upwards or downwards.</li>
+                                <li>Note down the reading in cms.</li>
+                            </ul> -->
+          <div class="buttonholder" *ngIf="!is_instruction"> 
+            <button class="accept" id="accept_button" (click)="changeStatus()">Accept</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

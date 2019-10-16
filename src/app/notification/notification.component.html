@@ -1,0 +1,45 @@
+   <div class="content-section">
+    <div class="container content-holder">
+        <div class="myscroll mCustomScrollbar" *ngIf="isnotificationData">
+            <div class="notification-card" *ngIf="notificationData?.length > 0;else other_content">
+                 <div class="left-panel"  *ngIf="leftPanel">
+                   <div *ngFor="let data of notificationData; let i = index"  class="notication-popups" id="noti_title_{{data.id}}" (click)="getNotificationData(data.id)">
+                    <div class="iconholder" *ngIf="data?.stage_icon">
+                              <img src="{{data.stage_icon}}" alt="">                                
+                       </div>
+                       <div class="notifs">
+                        <h4>{{data.title}}</h4>
+                        <p>{{data.description}}</p>
+                       </div>
+                   </div> 
+                 </div>
+                 <div  class="content-card right-panel" id="notification_content"  *ngIf="rightPanel">
+                   <div *ngFor="let data of notificationData; let i = index">
+                           <div  *ngIf="showHideObj[data.id]">
+                                  <div class="inliners">
+                                  <p id="noti_status{{data.id}}" *ngIf="data.flag != '0'">{{data.flag}}</p>
+                                  <p  *ngIf="showHideObj[data.id]">{{flagObj[data.id]}}</p>
+                                  <p  class="goback" (click)="backToLeftPanel()" *ngIf="goback" >< Go Back</p>
+                                  </div>
+                                  <div class="notif-banner" id="notif-banner" *ngIf="data?.stage_image">
+                                      <img src="{{data.stage_image}}" alt="">
+                                  </div>
+                                  <p class="noti-subject">{{data.title}}</p>
+                                  <div [innerHTML]="data.content" class="noti-body-msg">
+                                  </div>
+                                  <p class="noti-body-date"><span>{{data.date}}</span></p>
+
+                                  <div class="buttonholder"  *ngIf="(!flagObj[data.id] && data.flag == '0' )"  id="action{{data.id}}">
+                                    <a href="javascript:void(0);" (click)="takeAction(data.id,1)"><button class="accept">Accept</button></a>
+                                    <a href="javascript:void(0);" (click)="takeAction(data.id,2)"><button class="reject">Reject</button></a>
+                                  </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+            <ng-template #other_content> 
+              <div class="no-notification"><p>No data available</p></div>
+            </ng-template>
+        </div>
+    </div>
+</div>

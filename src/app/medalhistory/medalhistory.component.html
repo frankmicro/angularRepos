@@ -1,0 +1,40 @@
+<div class="content-section">
+  <div class="container content-holder">
+    <div class="myscroll mCustomScrollbar">
+
+      <div class="avatars">
+        <div class="header-card">
+          <h3>medal history</h3>
+        </div>
+        <div class="content-card">
+          <div class="avatar-section row">
+            <div class="medal-history">
+              <div *ngIf="data?.length > 0; else elseblock">
+              <div class="history-header">
+                <div style="width:15%;" class="floathead-left">Stage</div>
+                <div style="width:45%;" class="floathead-left">Name</div>
+                <div style="width:20%;" class="floathead-left">Points</div>
+                <div style="width:20%;" class="floathead-left text-center">Medals</div>
+              </div>
+              <div class="history-data" *ngFor="let item of data; let i = index">
+                <div style="width:15%;" class="floatdata-left">STAGE {{ item.week_id }}</div>
+                <div style="width:45%;" class="floatdata-left">{{ item.name }}</div>
+                <div style="width:20%;" class="floatdata-left">{{ item.total_points }}</div>
+                <div style="width:20%;" class="floatimg-left text-center"><img
+                    src="assets/images/stage_images/active/medal-stage-{{ item.week_id }}-active.png" alt=""></div>
+              </div>
+              </div>
+              <ng-template #elseblock>
+                <div style="width: 100%; text-align: center;">No records found</div>
+              </ng-template>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  

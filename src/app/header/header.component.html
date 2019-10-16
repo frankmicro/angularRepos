@@ -1,0 +1,113 @@
+<div class="header-section">
+  <div class="container">
+    <div class="webnav row">
+      <div class="logo"> 
+        <a class="" routerLink="/" [class.disabled]="!globals.Flags.IsInstructionFlag || !globals.Flags.IsCpFlag || !globals.Flags.IsAvtFlag || !globals.Flags.IsProfileFlag">
+          <img src="assets/images/dashlogo.png" alt="Fad 2 Fit Logo" class="dashlogo bounce-in-top">
+        </a>
+      </div>
+      <div class="rightnav">
+        <ul class="nav navbar-nav"> 
+          <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:
+true}"  [class.disabled]="!globals.Flags.IsInstructionFlag || !globals.Flags.IsCpFlag || !globals.Flags.IsAvtFlag || !globals.Flags.IsProfileFlag"><a routerLink="/dashboard">Dashboard</a></li>
+          <li class="dropdown " routerLinkActive="active"  [class.disabled]="!globals.Flags.IsInstructionFlag || !globals.Flags.IsCpFlag || !globals.Flags.IsAvtFlag || !globals.Flags.IsProfileFlag">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">Notification <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/notification/notification" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Notifications</a></li>
+              <li><a routerLink="/notification/assessment" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Assessments</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown" routerLinkActive="active"
+             [class.disabled]="!globals.Flags.IsInstructionFlag || !globals.Flags.IsCpFlag || !globals.Flags.IsAvtFlag || !globals.Flags.IsProfileFlag">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">{{ name }} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/profile/personal-info">My
+                  Profile</a></li>
+              <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/avatar">Avatar</a></li>
+              <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"
+                 [class.disabled]="!globals.Flags.IsInstructionFlag || !globals.Flags.IsCpFlag || !globals.Flags.IsAvtFlag || !globals.Flags.IsProfileFlag"><a
+                  routerLink="/instructions">Instructions</a></li>
+            </ul>
+          </li>
+          <li>
+              <button class="logoff" title="Logout" (click)="logout()"><i class="fa fa-power-off"></i></button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="responsivenav">
+      <div class="resp-wrapper">
+        <div class="togglesidenav" onclick="openNav()">
+          <img src="assets/images/sidemenu.png" alt="">
+        </div>
+        <div class="currenttab">
+          Dashboard
+        </div>
+
+        <div class="resp-actionbutton">
+
+          <form action="http://localhost:8000" method="get">
+            <button class="resp-sync syncload" title="Dashboard"><i class="fa fa-refresh rotate"></i></button>
+          </form>
+
+
+          <form action="http://localhost:8000/logout" method="get">
+            <button class="resp-logoff" title="Logout"><i class="fa fa-power-off"></i></button>
+          </form>
+
+        </div>
+      </div>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <div class="respmenu">
+          <div class="resp-logo">
+            <img src="assets/images/dashlogo.png" alt="Fad 2 Fit">
+          </div>
+          <a href="http://localhost:8000" class="respactive">Dashboard</a>
+          <a href="http://localhost:8000/user/profile" class="">Profile</a>
+          <a href="http://localhost:8000/avatar" class="">Avatar</a>
+          <a href="http://localhost:8000/notification/notification" class="">Notifications</a>
+          <a href="http://localhost:8000/notification/assessment" class="">Assessments</a>
+          <a href="http://localhost:8000/instructions" class="">Instructions</a>
+        </div>
+
+      </div>
+      <div class="resp-rightnav">
+        <ul class="nav navbar-nav">
+          <li class=""><a href="http://localhost:8000">Dashboard</a></li>
+          <li class="dropdown">
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
+              aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/user/profile">My Profile</a></li>
+              <li><a href="">Avatar</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
+              aria-haspopup="true" aria-expanded="false">Notification <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="http://localhost:8000/notification/notification">Notifications</a></li>
+              <li><a href="http://localhost:8000/notification/assessment">Assessments</a></li>
+            </ul>
+          </li>
+          <li class=""><a href="/instructions">Instructions</a></li>
+
+          <li class="inliner">
+            <form action="http://localhost:8000" method="get">
+              <button class="sync syncload" title="Dashboard"><i class="fa fa-refresh rotate"></i></button>
+            </form>
+          </li>
+          <li class="inliner">
+            <form action="http://localhost:8000/logout" method="get">
+              <button class="logoff" title="Logout"><i class="fa fa-power-off"></i></button>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

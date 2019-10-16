@@ -1,0 +1,76 @@
+<form id="tab7_form" name="tab7_form" novalidate="novalidate" (ngSubmit)="f.form.valid && goToNext()" #f="ngForm">
+  <div class="content-card">
+    <div class="profile-content step-content">
+      <section class="step-tab-panel active" id="tab7">
+        
+        <div class="form-group ">
+          <label>
+            Food Preference
+            <span class="mandatory blink-2">
+              *
+            </span>
+          </label>
+          <div class="radio inline">
+            <input aria-required="true" class="29_radio" id="29_vegetarian" name="29" required=""
+            [(ngModel)]="foodPreference['29']"
+            #preference="ngModel"
+              style="display:inline-block;" type="radio" value="Vegetarian">
+            <label for="29_vegetarian">
+              Vegetarian
+            </label>
+          </div>
+          <div class="radio inline">
+            <input aria-required="true" class="29_radio" id="29_non_vegetarian" name="29" required=""
+            [(ngModel)]="foodPreference['29']"
+            #preference="ngModel"
+              style="display:inline-block;" type="radio" value="Non Vegetarian">
+            <label for="29_non_vegetarian">
+              Non Vegetarian
+            </label>
+          </div>
+          <div class="radio inline">
+            <input aria-required="true" class="29_radio" id="29_eggetarian" name="29" required=""
+            [(ngModel)]="foodPreference['29']"
+            #preference="ngModel"
+              style="display:inline-block;" type="radio" value="Eggetarian">
+            <label for="29_eggetarian">
+              Eggetarian
+            </label>
+          </div>
+          <div class="radio inline">
+            <input aria-required="true" class="29_radio" id="29_vegan" name="29" required=""
+            [(ngModel)]="foodPreference['29']"
+            #preference="ngModel"
+            style="display:inline-block;"
+              type="radio" value="Vegan">
+            <label for="29_vegan">
+              Vegan
+            </label>
+          </div>
+          <div class="error-29"></div>
+          <div *ngIf="preference.invalid && (f.submitted || preference.dirty || preference.touched)" class="alert alert-danger" class="cust-error">
+            <div *ngIf="preference.errors.required">
+              Food Preference is required.
+            </div>
+          </div>
+        </div>
+        
+      </section>
+    </div>
+    <div *ngIf="f.form.invalid; else elseblock">
+      {{ profileDataService.validationError(f.form.invalid, 7) }}
+    </div> 
+    <ng-template #elseblock>
+      {{ profileDataService.validationError(f.form.invalid, 7) }}
+      {{ formValidHandler() }}
+    </ng-template>
+    <div class="step-footer">
+        <button class="step-btn previous" data-direction="prev" (click)="goToPrevious()" [disabled]="f.form.invalid">
+          Previous
+        </button>
+        <button type="submit" class="step-btn btn btn-danger saveme" data-direction="next">
+          Next
+        </button>
+      </div>
+  </div>
+</form>
