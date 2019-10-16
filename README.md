@@ -1,5 +1,5 @@
 #Angular 
-Author: Rohan Parkar, Abdul Wajid, Anil Reddy.
+Author: Rohan Parkar.
 
 Requirements:
 
