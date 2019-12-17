@@ -12,14 +12,13 @@ const routes: Routes = [
         children: [
             {
                 path: 'list',
-                component: StudentListComponent,
+                component: StudentListComponent
             },
             {
                 path: 'detail',
-                component: StudentDetailComponent,
-            },
-            { path: '**', redirectTo: 'student' }
-        ],
+                component: StudentDetailComponent
+            }
+        ]
     }
 ];
 
