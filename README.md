@@ -1,32 +1,27 @@
-#Angular 
-Author: Rohan Parkar.
+# Angular
 
-Requirements:
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
 
-Angular Version 7
+## Development server
 
-1. Before you begin, make sure your development environment includes Node.js® and an npm package manager.
-2. npm install -g @angular/cli
-3. ng new my-app
-4. ng serve 
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-#contents used
+## Code scaffolding
 
-1. component
-2. routing, module
-3. services, http module
-4. interceptors
-5. directives, helpers
-6. ngx-image-cropper
-7. model classes
-8. rxjs event emitter
-9.Forms
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-link - https://angular.io/guide/setup-local
-Angular Guard - https://www.techiediaries.com/angular-tutorial-reactive-forms/
+## Build
 
-10. crypto js service - encryption & decryption 
-link - https://www.code-sample.com/2018/12/angular-7-cryptojs-encrypt-decrypt.html
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-11. lifecycles
-link - https://alligator.io/angular/lifecycle-hooks/
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

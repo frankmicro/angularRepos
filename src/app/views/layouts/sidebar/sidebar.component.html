@@ -1,0 +1,46 @@
+<aside class="cart-container">
+  <div class="cart">
+    <h1 class="cart-title spread">
+      <span>
+        Cart
+        <i class="icofont-cart-alt icofont-1x"></i>
+      </span>
+      <button class="cart-close" (click)="cancelEvent()">&times;</button>
+    </h1>
+
+    <div class="cart-body">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Icon</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let val of shoppingCart; let i = index">
+            <td><i [ngClass]="['icofont-'+val?.icon+' icofont-3x']"></i></td>
+            <td>{{ val.name }}</td>
+            <td>{{ val?.price['USD'] }}</td>
+            <td class="center">{{ val?.totalQuantity }}</td>
+            <td>{{ val?.total.toFixed(2) }}</td>
+            <td class="center">
+              <button (click)="removeItem(val?.id)" class="btn btn-light cart-remove">
+                &times;
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="center" *ngIf="!shoppingCart.length"><em>No items in cart</em></p>
+      <div class="spread">
+        <span><strong>Total:</strong> ${{ subTotal.toFixed(2) }}</span>
+        <button class="btn btn-light">Checkout</button>
+      </div>
+    </div>
+  </div>
+</aside>

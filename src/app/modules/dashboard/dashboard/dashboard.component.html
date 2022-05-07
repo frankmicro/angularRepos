@@ -1,0 +1,56 @@
+<div>
+  <div class="splash-container">
+     <div class="splash">
+       <h1>Splendid Food</h1>
+     </div>
+   </div>
+   <main class="wrapper">
+    <h2>Top Recommended</h2>
+    <div class="recommended">
+      <div class="card" *ngFor="let item of inventory; let i = index">
+        <div class="card-title">
+          {{ item.name }}
+        </div>
+        <div class="card-body">
+          <i [ngClass]="['icofont-10x icofont-'+item.icon]"></i>
+          <form #cartForm="ngForm" novalidate="novalidate">
+            <div class="row">
+              <div class="cell">
+                <label>Type:</label>
+              </div>
+              <div class="cell">
+                <em>{{ item.type }}</em>
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <label>Price:</label>
+              </div>
+              <div class="cell">
+                ${{ item.price['USD'] }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="cell">
+                <label>Quantity:</label>
+              </div>
+              <div class="cell">
+                <input
+                 name="{{ item.name }}"
+                 [(ngModel)]="item.quantity"
+                 #quantity="ngModel"
+                 type="number">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="submit" (click)="addToCart(item.id, item.quantity)" class="btn btn-light">
+            Add to cart
+            </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
